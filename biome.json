@@ -1,0 +1,24 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "files": {
+    "ignore": ["node_modules", ".next", "tmp", "out", "src-tauri"]
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "formatter": {
+    "enabled": false
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
+  }
+}

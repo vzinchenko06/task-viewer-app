@@ -1,0 +1,67 @@
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+.description-html {
+  font-family: var(--joy-fontFamily-body, 'Roboto', sans-serif);
+  font-size: var(--joy-fontSize-md, 1rem);
+  line-height: var(--joy-lineHeight-md, 1.5);
+  color: var(--joy-palette-text-primary, #000);
+  margin-top: 0.5rem;
+}
+
+.description-html h1,
+.description-html h2,
+.description-html h3,
+.description-html h4,
+.description-html h5,
+.description-html h6 {
+  font-family: var(--joy-fontFamily-heading, 'Roboto', sans-serif);
+  color: var(--joy-palette-text-primary, #000);
+  margin: 1rem 0 0.5rem;
+}
+
+.description-html p {
+  margin: 0 0 1rem;
+}
+
+.description-html ul,
+.description-html ol {
+  margin: 0 0 1rem 1.5rem;
+  padding: 0;
+}
+
+.description-html a {
+  color: var(--joy-palette-primary-main, #007FFF);
+  text-decoration: none;
+}
+
+.description-html a:hover {
+  text-decoration: underline;
+}
+
+.description-html strong {
+  font-weight: var(--joy-fontWeight-bold, 700);
+}
+
+.description-html em {
+  font-style: italic;
+}
+
+.description-html blockquote {
+  margin: 1.5rem 0;
+  padding: 0.5rem 1rem;
+  border-left: 4px solid var(--joy-palette-divider, #e0e0e0);
+  background-color: var(--joy-palette-background-level2, #f9f9f9);
+  color: var(--joy-palette-text-secondary, #555);
+}
+
+.description-html code {
+  font-family: var(--joy-fontFamily-code, 'Courier New', monospace);
+  background-color: var(--joy-palette-background-level1, #f5f5f5);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--joy-radius-sm, 4px);
+  color: var(--joy-palette-text-primary, #000);
+}
