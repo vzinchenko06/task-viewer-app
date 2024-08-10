@@ -1,59 +1,53 @@
 "use client";
 
-import { FileChip } from "@/components/FileChip";
 import type { Task } from "@/types";
-import Box from "@mui/joy/Box";
 import Link from "@mui/joy/Link";
-import TableComponent from "@mui/joy/Table";
+import Table from "@mui/joy/Table";
 import {
 	type Cell,
 	type Header,
 	type Row,
 	type SortDirection,
-	type Table,
 	flexRender,
 } from "@tanstack/react-table";
 import { ArrowDownAZIcon, ArrowUpZAIcon } from "lucide-react";
 import type { MouseEventHandler, ReactNode } from "react";
 
-type RowClickHandler = (task: Task) => void;
+export type RowSelectHandler = (task: Task) => void;
 
-export const SORT_ICON: Record<SortDirection, ReactNode> = {
+const SORT_ICON: Record<SortDirection, ReactNode> = {
 	asc: <ArrowUpZAIcon size={16} />,
 	desc: <ArrowDownAZIcon size={16} />,
 };
 
-export interface TaskTableProps {
-	table: Table<Task>;
-	onRowClick: RowClickHandler;
-	fileName?: string;
+export interface TaskTableProps extends TaskTableHeadRowProps {
+	rows: Row<Task>[];
+	onRowSelect: RowSelectHandler;
+	stickyHeader?: boolean;
 }
 
-export function TaskTable({ table, onRowClick, fileName }: TaskTableProps) {
-	const headers = table.getFlatHeaders();
-	const rowModel = table.getRowModel();
-
+export function TaskTable({
+	headers = [],
+	rows = [],
+	onRowSelect,
+	stickyHeader = false,
+}: TaskTableProps) {
 	return (
-		<Box sx={{ position: "relative" }}>
-			<Box sx={{ position: "absolute", top: 2, left: 4, zIndex: 100 }}>
-				<FileChip file={fileName ?? ""} />
-			</Box>
-			<TableComponent
-				stickyHeader
-				hoverRow
-				variant="plain"
-				borderAxis="xBetween"
-			>
-				<thead>
-					<TaskTableHeadRow headers={headers} />
-				</thead>
-				<tbody>
-					{rowModel.rows.map((row) => (
-						<TaskTableRow key={row.id} onClick={onRowClick} row={row} />
-					))}
-				</tbody>
-			</TableComponent>
-		</Box>
+		<Table
+			stickyHeader={stickyHeader}
+			hoverRow
+			variant="plain"
+			borderAxis="xBetween"
+		>
+			<thead>
+				<TaskTableHeadRow headers={headers} />
+			</thead>
+			<tbody>
+				{rows.map((row) => (
+					<TaskTableRow key={row.id} onSelect={onRowSelect} row={row} />
+				))}
+			</tbody>
+		</Table>
 	);
 }
 
@@ -102,19 +96,19 @@ export function TaskTableSortIcon({ direction }: TaskTableSortIcon) {
 
 export interface TaskTableRowProps {
 	row: Row<Task>;
-	onClick: RowClickHandler;
+	onSelect: RowSelectHandler;
 }
 
-export function TaskTableRow({ row, onClick }: TaskTableRowProps) {
+export function TaskTableRow({ row, onSelect }: TaskTableRowProps) {
 	const handleRowClick: MouseEventHandler<HTMLTableRowElement> = () => {
-		onClick(row.original);
+		onSelect(row.original);
 	};
 
 	const handleRowKeyPress = (
 		event: React.KeyboardEvent<HTMLTableRowElement>,
 	) => {
 		if (event.key === "Enter" || event.key === " ") {
-			onClick(row.original);
+			onSelect(row.original);
 		}
 	};
 

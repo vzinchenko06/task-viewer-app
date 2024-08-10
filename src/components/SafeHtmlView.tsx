@@ -1,13 +1,12 @@
-// import DOMPurify from 'dompurify';
+"use client";
+
 import Sheet from "@mui/joy/Sheet";
 
 interface SafeHTMLProps {
 	html?: string;
 }
 
-export function SafeHTML({ html }: SafeHTMLProps) {
-	// const sanitizedHTML = DOMPurify.sanitize(html);
-
+export function SafeHtmlView({ html }: SafeHTMLProps) {
 	return (
 		<Sheet variant="soft" sx={{ padding: 2 }}>
 			<div

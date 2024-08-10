@@ -1,3 +1,5 @@
+"use client";
+
 import type { Task } from "@/types";
 import { FormControl, FormLabel } from "@mui/joy";
 import Input from "@mui/joy/Input";

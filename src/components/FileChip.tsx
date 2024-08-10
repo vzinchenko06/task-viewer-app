@@ -1,3 +1,5 @@
+"use client";
+
 import { Chip } from "@mui/joy";
 import { FileIcon } from "lucide-react";
 

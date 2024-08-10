@@ -7,7 +7,7 @@
     "distDir": "../out"
   },
   "package": {
-    "productName": "task-viewer-app",
+    "productName": "Task Viewer",
     "version": "0.1.0"
   },
   "tauri": {
@@ -41,7 +41,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.task-viewer-app.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -68,10 +68,8 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
         "resizable": true,
-        "title": "Task Viewer",
-        "width": 800
+        "title": "Tasks"
       }
     ]
   }
