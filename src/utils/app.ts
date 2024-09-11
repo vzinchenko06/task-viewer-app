@@ -7,6 +7,7 @@ export function openInNewWindow(task: Task) {
 
 	if (window) {
 		window.show().catch(console.error);
+		window.setFocus().catch(console.error);
 		return;
 	}
 
